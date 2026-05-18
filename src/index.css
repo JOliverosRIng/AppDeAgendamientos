@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f5f7fb;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+.dark body {
+  background: #0f172a;
+  color: white;
+}
+
+input,
+button {
+  font-family: inherit;
+}
+
+.fc {
+  background: white;
+  border-radius: 24px;
+  padding: 10px;
+}
+
+.dark .fc {
+  background: #1e293b;
+  color: white;
+}
+
+.fc .fc-button {
+  background: #6C63FF !important;
+  border: none !important;
+  border-radius: 12px !important;
+}
+
+.fc .fc-button:hover {
+  opacity: 0.9;
+}
+
+.fc-event {
+  border: none !important;
+  border-radius: 10px !important;
+}
