@@ -1,6 +1,18 @@
 import CalendarView from "../components/CalendarView";
+import { useState } from "react";
+import ClassFormModal from "../components/ClassFormModal";
 
 function Agenda() {
+  const [showModal, setShowModal] =
+  useState(false);
+
+const [events, setEvents] = useState([
+  {
+    title: "Clase Inglés",
+    start: "2026-05-20T10:00:00",
+  },
+]);
+
   return (
     <div>
 
@@ -18,13 +30,51 @@ function Agenda() {
 
         </div>
 
-        <button className="bg-[#6C63FF] text-white px-6 py-3 rounded-2xl hover:opacity-90 transition">
-          Nueva reserva
-        </button>
+        <button
+          onClick={() => setShowModal(true)}
+          className="
+            bg-[#6C63FF]
+            text-white
+            px-6
+            py-3
+            rounded-2xl
+            hover:opacity-90
+            transition
+          "
+        >
+
+         Nueva clase
+
+      </button>
 
       </div>
 
-      <CalendarView />
+      <CalendarView
+        events={events}
+      />
+
+      {
+        showModal && (
+
+          <ClassFormModal
+
+            onClose={() =>
+              setShowModal(false)
+            }
+
+            onAddEvent={(newEvent) => {
+
+              setEvents([
+                ...events,
+                newEvent,
+              ]);
+
+            }}
+
+          />
+
+        )
+      }
 
     </div>
   );
