@@ -1,6 +1,7 @@
 import { payments } from "../data/payments";
 import PaymentTable from "../components/PaymentTable";
 import IncomeChart from "../components/IncomeChart";
+import { exportPaymentsToExcel } from "../utils/exportPaymentsToExcel";
 
 function Payments() {
 
@@ -47,6 +48,29 @@ function Payments() {
         </p>
 
       </div>
+
+      <div className="flex justify-end mb-8">
+
+  <button
+    onClick={() =>
+      exportPaymentsToExcel(payments)
+    }
+    className="
+      bg-green-500
+      hover:bg-green-600
+      text-white
+      px-6
+      py-3
+      rounded-2xl
+      transition
+    "
+  >
+
+    Exportar Excel.
+
+  </button>
+
+</div>
 
       {/* Stats */}
       <div className="
