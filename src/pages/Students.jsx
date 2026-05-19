@@ -1,12 +1,8 @@
-import {
-  useEffect,
-  useState,
-} from "react";
-
+import {useEffect,useState,} from "react";
 import StudentCard from "../components/StudentCard";
 import StudentModal from "../components/StudentModal";
 import StudentFormModal from "../components/StudentFormModal";
-
+import { toast } from "react-toastify";
 import { students as initialStudents } from "../data/students";
 
 function Students() {
@@ -25,10 +21,9 @@ function Students() {
 
   useEffect(() => {
 
-    const savedStudents =
-      localStorage.getItem("students");
+    const savedStudents = localStorage.getItem("students");
 
-    if (savedStudents) {
+    if (savedStudents && JSON.parse(savedStudents).length > 0) {
 
       setStudents(JSON.parse(savedStudents));
 
@@ -76,6 +71,7 @@ const handleDeleteStudent = (id) => {
   setStudents(updatedStudents);
 
   setSelectedStudent(null);
+  toast.error("Estudiante eliminado");
 
 };
 

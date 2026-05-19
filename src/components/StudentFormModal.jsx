@@ -1,7 +1,6 @@
-import {
-  useEffect,
-  useState,
-} from "react";
+import { toast } from "react-toastify";
+
+import {useEffect, useState,} from "react";
 
 function StudentFormModal({
   onClose,
@@ -46,31 +45,52 @@ function StudentFormModal({
 
   const handleSubmit = (e) => {
 
-    e.preventDefault();
+     e.preventDefault();
 
-    if (editingStudent) {
+     // Validaciones
+     if (!formData.name.trim()) {
 
-      onEditStudent(formData);
+     toast.warning("El nombre es obligatorio");
 
-    }
+     return;
+     }
 
-    else {
+     if (!formData.email.includes("@")) {
 
-      const newStudent = {
+     toast.warning("Correo inválido");
 
-        ...formData,
+     return;
+     }
 
-        id: Date.now(),
+     // Editar
+     if (editingStudent) {
 
-      };
+     onEditStudent(formData);
 
-      onAddStudent(newStudent);
+     toast.info("Estudiante actualizado.");
 
-    }
+     }
 
-    onClose();
+     // Crear
+     else {
 
-  };
+     const newStudent = {
+
+          ...formData,
+
+          id: Date.now(),
+
+     };
+
+     onAddStudent(newStudent);
+
+     toast.success("Estudiante creado.");
+
+     }
+
+     onClose();
+
+     };
 
   return (
 
