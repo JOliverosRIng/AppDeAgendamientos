@@ -1,8 +1,11 @@
-import {useEffect,useState,} from "react";
+import { useEffect, useState } from "react";
+
 import StudentCard from "../components/StudentCard";
 import StudentModal from "../components/StudentModal";
 import StudentFormModal from "../components/StudentFormModal";
+
 import { toast } from "react-toastify";
+
 import { students as initialStudents } from "../data/students";
 
 function Students() {
@@ -14,16 +17,22 @@ function Students() {
 
   const [search, setSearch] = useState("");
 
-  const [showFormModal, setShowFormModal] = useState(false);
+  const [showFormModal, setShowFormModal] =
+    useState(false);
 
   const [editingStudent, setEditingStudent] =
-  useState(null);
+    useState(null);
 
+  // Cargar estudiantes
   useEffect(() => {
 
-    const savedStudents = localStorage.getItem("students");
+    const savedStudents =
+      localStorage.getItem("students");
 
-    if (savedStudents && JSON.parse(savedStudents).length > 0) {
+    if (
+      savedStudents &&
+      JSON.parse(savedStudents).length > 0
+    ) {
 
       setStudents(JSON.parse(savedStudents));
 
@@ -35,6 +44,7 @@ function Students() {
 
   }, []);
 
+  // Guardar estudiantes
   useEffect(() => {
 
     localStorage.setItem(
@@ -44,6 +54,7 @@ function Students() {
 
   }, [students]);
 
+  // Filtrar estudiantes
   const filteredStudents = students.filter(
     (student) =>
       student.name
@@ -51,49 +62,56 @@ function Students() {
         .includes(search.toLowerCase())
   );
 
+  // Agregar estudiante
   const handleAddStudent = (student) => {
 
-  setStudents([
-    student,
-    ...students,
-  ]);
+    setStudents([
+      student,
+      ...students,
+    ]);
 
-};
+  };
 
-const handleDeleteStudent = (id) => {
+  // Eliminar estudiante
+  const handleDeleteStudent = (id) => {
 
-  const updatedStudents =
-    students.filter(
-      (student) =>
-        student.id !== id
-    );
+    const updatedStudents =
+      students.filter(
+        (student) =>
+          student.id !== id
+      );
 
-  setStudents(updatedStudents);
+    setStudents(updatedStudents);
 
-  setSelectedStudent(null);
-  toast.error("Estudiante eliminado");
+    setSelectedStudent(null);
 
-};
+    toast.error("Estudiante eliminado");
 
-const handleEditStudent = (updatedStudent) => {
+  };
 
-  const updatedStudents =
-    students.map((student) =>
+  // Editar estudiante
+  const handleEditStudent = (updatedStudent) => {
 
-      student.id === updatedStudent.id
-        ? updatedStudent
-        : student
+    const updatedStudents =
+      students.map((student) =>
 
-    );
+        student.id === updatedStudent.id
+          ? updatedStudent
+          : student
 
-  setStudents(updatedStudents);
+      );
 
-};
+    setStudents(updatedStudents);
+
+    toast.info("Estudiante actualizado");
+
+  };
 
   return (
+
     <div>
 
-      {/* Header */}
+      {/* HEADER */}
       <div className="flex justify-between items-center mb-10">
 
         <div>
@@ -109,8 +127,22 @@ const handleEditStudent = (updatedStudent) => {
         </div>
 
         <button
-          onClick={() => setShowFormModal(true)}
-          className="bg-[#6C63FF] text-white px-6 py-3 rounded-2xl hover:opacity-90 transition"
+          onClick={() => {
+
+            setEditingStudent(null);
+
+            setShowFormModal(true);
+
+          }}
+          className="
+            bg-[#6C63FF]
+            text-white
+            px-6
+            py-3
+            rounded-2xl
+            hover:opacity-90
+            transition
+          "
         >
 
           Nuevo estudiante
@@ -119,8 +151,17 @@ const handleEditStudent = (updatedStudent) => {
 
       </div>
 
-      {/* Search */}
-      <div className="bg-white dark:bg-slate-800 rounded-3xl p-5 mb-8 border border-gray-100 dark:border-slate-700">
+      {/* SEARCH */}
+      <div className="
+        bg-white
+        dark:bg-slate-800
+        rounded-3xl
+        p-5
+        mb-8
+        border
+        border-gray-100
+        dark:border-slate-700
+      ">
 
         <input
           type="text"
@@ -129,27 +170,77 @@ const handleEditStudent = (updatedStudent) => {
           onChange={(e) =>
             setSearch(e.target.value)
           }
-          className="w-full bg-transparent outline-none dark:text-white"
+          className="
+            w-full
+            bg-transparent
+            outline-none
+            dark:text-white
+          "
         />
 
       </div>
 
-      {/* Students Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {/* GRID */}
+      {
+        filteredStudents.length > 0 ? (
 
-        {filteredStudents.map((student) => (
+          <div className="
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            xl:grid-cols-3
+            gap-6
+          ">
 
-          <StudentCard
-            key={student.id}
-            student={student}
-            onClick={setSelectedStudent}
-          />
+            {filteredStudents.map((student) => (
 
-        ))}
+              <StudentCard
+                key={student.id}
+                student={student}
+                onClick={setSelectedStudent}
+              />
 
-      </div>
+            ))}
 
-      {/* Modal */}
+          </div>
+
+        ) : (
+
+          <div className="
+            bg-white
+            dark:bg-slate-800
+            rounded-3xl
+            p-16
+            text-center
+            border
+            border-gray-100
+            dark:border-slate-700
+          ">
+
+            <h2 className="
+              text-3xl
+              font-bold
+              mb-4
+              dark:text-white
+            ">
+
+              No se encontraron estudiantes 😢
+
+            </h2>
+
+            <p className="text-gray-500">
+
+              Intenta cambiar la búsqueda
+              o crear uno nuevo.
+
+            </p>
+
+          </div>
+
+        )
+      }
+
+      {/* MODAL DETALLES */}
       <StudentModal
         student={selectedStudent}
         onClose={() =>
@@ -165,31 +256,30 @@ const handleEditStudent = (updatedStudent) => {
           setSelectedStudent(null);
 
         }}
-/>
+      />
 
+      {/* MODAL FORMULARIO */}
       {
-  showFormModal && (
+        showFormModal && (
 
-    <StudentFormModal
-      onClose={() => {
+          <StudentFormModal
+            onClose={() => {
 
-        setShowFormModal(false);
+              setShowFormModal(false);
 
-        setEditingStudent(null);
+              setEditingStudent(null);
 
-      }}
+            }}
+            onAddStudent={handleAddStudent}
+            onEditStudent={handleEditStudent}
+            editingStudent={editingStudent}
+          />
 
-      onAddStudent={handleAddStudent}
-
-      onEditStudent={handleEditStudent}
-
-      editingStudent={editingStudent}
-    />
-
-  )
-}
+        )
+      }
 
     </div>
+
   );
 }
 
