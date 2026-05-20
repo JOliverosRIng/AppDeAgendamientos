@@ -32,3 +32,8 @@ Este proyecto es el frontend de un sistema de agendamiento de clases desarrollad
 
 # Integrantes del grupo
 - Estudiante: Janeth Oliveros Ramirez  Código: 20182020100
+Correo: joliverosr@udistrital.edu.co
+
+## Importante
+
+- Solicitamos certificado físico.
