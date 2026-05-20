@@ -1,8 +1,10 @@
 import DashboardCard from "../components/DashboardCard";
 import StudentsTable from "../components/StudentsTable";
 import PerformanceChart from "../components/PerformanceChart";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+    const navigate = useNavigate();
   return (
     <div>
 
@@ -21,8 +23,19 @@ function Home() {
 
         </div>
 
-        <button className="bg-[#6C63FF] text-white px-6 py-3 rounded-2xl hover:opacity-90 transition">
-          Nueva clase
+        <button
+          onClick={() => navigate("/agenda")}
+          className="
+            bg-[#6C63FF]
+            text-white
+            px-6
+            py-3
+            rounded-2xl
+            hover:opacity-90
+            transition
+          "
+        >
+          Agendar nueva clase
         </button>
 
       </div>
