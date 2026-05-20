@@ -1,33 +1,17 @@
-import { StrictMode } from "react";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
 
-import { createRoot } from "react-dom/client";
+import {
+  HashRouter
+} from "react-router-dom";
 
-import "./index.css";
+ReactDOM.createRoot(document.getElementById('root')).render(
 
-import App from "./App.jsx";
+  <HashRouter>
 
-import ThemeProvider from "./context/ThemeContext";
+    <App />
 
-import { ToastContainer } from "react-toastify";
+  </HashRouter>
 
-import "react-toastify/dist/ReactToastify.css";
-
-createRoot(document.getElementById("root")).render(
-
-  <StrictMode>
-
-    <ThemeProvider>
-
-      <App />
-
-      <ToastContainer
-        position="top-right"
-        autoClose={2500}
-        theme="colored"
-      />
-
-    </ThemeProvider>
-
-  </StrictMode>
-
-);
+)
