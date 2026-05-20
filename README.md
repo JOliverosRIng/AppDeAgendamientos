@@ -23,7 +23,7 @@ Este proyecto es el frontend de un sistema de agendamiento de clases desarrollad
 
 ---
 
-## 🔮 Posibles mejoras
+## Posibles mejoras
 
 - Integración con backend y base de datos.
 - Sistema de usuarios (profesor/estudiante).
