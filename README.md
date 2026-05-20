@@ -3,6 +3,7 @@
 ## Descripción
 
 Este proyecto es el frontend de un sistema de agendamiento de clases desarrollado en React. Permite a los usuarios crear, visualizar y gestionar citas de clases de forma sencilla e intuitiva.
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/02ad9c3e-cfd0-41c9-8f57-4240d134033c" />
 
 
 ## Funcionalidades principales
