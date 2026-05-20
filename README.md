@@ -1,16 +1,39 @@
-# React + Vite
+# Frontend - Sistema de Agendamiento de Clases
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Este proyecto es el frontend de un sistema de agendamiento de clases desarrollado en React. Permite a los usuarios crear, visualizar y gestionar citas de clases de forma sencilla e intuitiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Funcionalidades principales
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 📅 Creación de clases con título, fecha y hora.
+- 📋 Visualización de clases agendadas.
+- 🪟 Uso de modales para formularios de registro.
+- ⚡ Interacción dinámica sin recargar la página.
+- 🔄 Manejo de estado con React (`useState`).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologías usadas
+
+- React
+- JavaScript
+- CSS
+
+---
+
+## Posibles mejoras
+
+- Integración con backend y base de datos.
+- Sistema de usuarios (profesor/estudiante).
+- Calendario visual.
+- Editar y eliminar clases.
+
+# Integrantes del grupo
+- Estudiante: Janeth Oliveros Ramirez  Código: 20182020100
+Correo: joliverosr@udistrital.edu.co
+
+## Importante
+
+- Solicitamos certificado físico.
